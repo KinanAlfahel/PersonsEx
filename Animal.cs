@@ -15,6 +15,38 @@ namespace PersonsEx
         public abstract void DoSound();
 
 
+
+        //public Stats() { } //: this(10, 10, 10, "sverige", "blue") { }
+        //public override Stats(double NrOfSpikes, double IsPoisonous, double WingSpan, string pLand, string fColors, 
+        //    string sGender) : base(NrOfSpikes, IsPoisonous, WingSpan, pLand, fColors, sGender)
+        //{
+
+
+        //}
+
+        public virtual string Stats(double nrospikes, double ispoisonous, double wingspan, string pland, string fcolors,
+            string sgender)
+        {
+            return $"{this.GetType().Name} has properties: {nrospikes},{ispoisonous},{wingspan},{pland},{fcolors}" +
+                $",{sgender}.";
+        }
+        public override string Stats(double nrospikes, double ispoisonous, double wingspan, string pland, string fcolors,
+            string sgender)
+        {
+            var result = new StringBuilder();
+
+            result.AppendLine(base.Stats(nrospikes, ispoisonous, wingspan, pland, fcolors, sgender));
+
+            NrOfSpikes = nrospikes;
+            IsPoisonous = ispoisonous;
+            WingSpan = wingspan;
+            pLand = pland;
+            fColors = fcolors;
+            sGender = sgender;
+
+            return result.ToString();
+
+        }
     }
 
     public class Horse : Animal
@@ -90,6 +122,8 @@ namespace PersonsEx
 
         }
     }
-    
+
+
+
 
 }
